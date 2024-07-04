@@ -1,0 +1,33 @@
+Nested Classes:
+1. There are 4 types of nested classes
+    a. Static Nested Class
+    b. Instance Class
+    c. Local Class
+    d. Anonymous Class
+2. Before JDK 16, only static nested classes are allowed to have static members (methods and variables)
+3. From JDK 16, all 4 types of classes can contain static members.
+
+Static Nested Class:
+1. Static nested class has the privilege to access all the private attributes of outer class using outerclass instance.
+Syntax of Instantiation:
+    OuterClass1 outerClass = new OuterClass1();
+    OuterClass1.InnerStaticClass innerStaticClass = new OuterClass1.InnerStaticClass();
+
+Inner Classes:
+1. Inner class has privilege to access all the private attributes of outer class without using instance of outerclass.
+2. Static members are allowed.
+Syntax of Instantiation:
+    OuterClass2 outerClass = new OuterClass2();
+    OuterClass2.InnerClass innerClass = outerClass.new InnerClass();
+
+Local Classes:
+1. Local Classes are inner classes but declared inside a method body.
+2. Because of that, they don't have access modifiers and are only accessible to that method while executing
+3. Inner class has privilege to access all the private attributes of outer class without using instance of outerclass.
+4. Within the local class, all members must be either final (declared explicitly) or effectively final (not declared final but in the whole code its value is not changed), else we get compilation error
+5. That inner class scope is within the method and we need to make use of it inside it.
+6. The point of Local Classes is to provide a class, only single functionality.
+
+Anonymous Class:
+1. It is a local class with no name.
+2. It is created without declaration but only with instantiation
