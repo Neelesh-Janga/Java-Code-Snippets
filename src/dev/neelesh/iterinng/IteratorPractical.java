@@ -64,6 +64,10 @@ public class IteratorPractical {
             System.out.println(iterator.next());
         }
 
+        for(StudentLinkedList sl : sl1) {
+            System.out.println(sl.name);
+        }
+
         List<Integer> list = new ArrayList<>(List.of(1,2,3,4,5));
         Iterator<Integer> itr = list.iterator();
         while(itr.hasNext()) {

@@ -17,5 +17,6 @@ Iterator and Iterable:
 5. Iterator is an interface having 2 abstract methods hasNext() and next(). We need to write custom logic here that
    ensures that these Objects are being iterated using next and hasNext methods. Example: Iteration on User defined
    LinkedList class.
-6. By default, all Collection objects implement Iterable interface and those are implementing them must implement iterator()
+6. A part from using next() method, iterable facilitates custom objects to iterate over an enhanced for-each loop.
+7. By default, all Collection objects implement Iterable interface and those are implementing them must implement iterator()
    method. Eg: ArrayList implements the iterator() method, etc.
