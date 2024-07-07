@@ -1,0 +1,21 @@
+Iterator and Iterable:
+1. Iterator is an interface that provides 2 abstract methods,
+    a. boolean hasNext();
+    b. E next();
+2. Iterable interface though being technically accepted as a functional interface but its not, here is how:
+    While Iterable has a single abstract method, it is not considered a functional interface because its design
+    and intent are to provide iteration over a collection rather than represent a "single abstract operation/behaviour".
+
+     What is single abstract behaviour?
+        The term "single abstract behavior" refers to the core functionality that a functional interface in Java is
+        intended to represent. Example, Comparator to compare 2 values, Predicate to get boolean result based on the
+        method logic, etc.
+        While Iterable has one abstract method (iterator), it is not designed to represent a single, concise operation
+        or behavior. Instead, it represents a collection that can be iterated over, which is a BROADER CONCEPT.
+3. Any Object that needs to be iterated over must implement Iterable interface and should implement iterator() method.
+4. iterator() method returns an Iterator object.
+5. Iterator is an interface having 2 abstract methods hasNext() and next(). We need to write custom logic here that
+   ensures that these Objects are being iterated using next and hasNext methods. Example: Iteration on User defined
+   LinkedList class.
+6. By default, all Collection objects implement Iterable interface and those are implementing them must implement iterator()
+   method. Eg: ArrayList implements the iterator() method, etc.
