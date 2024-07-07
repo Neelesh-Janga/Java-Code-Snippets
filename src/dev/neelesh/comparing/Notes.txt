@@ -1,0 +1,19 @@
+Question:
+How can the Comparator interface has more than one abstract method? (compare & equals)
+
+Answer:
+👉🏼Comparator is used for sorting purposes.
+
+👉🏼In a Functional interface, a part from one abstract method, we can also declare 2 more abstract methods
+    boolean equals(Object obj);
+    int hashCode();
+  In Java, all interfaces implicitly declare the methods of the Object class. This includes methods like
+  equals(Object obj), hashCode(), and toString(). These methods do not count towards the abstract method count for
+  the purpose of determining whether an interface is a functional interface.
+
+👉🏼A functional interface is defined as an interface with exactly one abstract method, ignoring:
+  1. Methods from java.lang.Object implicitly declared in the interface.
+  2. Default and static methods with concrete implementations.
+
+👉🏼This is the reason why in Comparator interface we see equals abstract method a part from compare abstract method but
+  still the interface is considered as a functional interface.
