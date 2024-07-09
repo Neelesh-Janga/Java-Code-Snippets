@@ -1,0 +1,62 @@
+List:
+1. It's an ordered collection of objects.
+2. Methods defined in List Interface:
+    a. add(int index, E element)
+    b. addAll(int index, Collection c)
+    c. replaceAll(UnaryOperator op) - replaces each element with the result of applying UnaryOperator
+    d. sort(Comparator c)
+    e. get(int index)
+    f. set(int index, Element e)
+    g. remove(int index)
+    h. indexOf(Object o) - returns index of first appearance of the object
+    i. lastIndexOf(Object o)
+    j. listIterator() - returns ListIterator<E>
+       ListIterator interface has all the methods of Iterator and some additional methods:
+       1. hasPrevious() - return true if previous elements exists else false
+       2. previous() - returns previous element E
+       3. nextIndex() - returns next index
+       4. previousIndex() - returns previous index
+       5. set(E e) - replaces current element returned by the next or previous with the specified element.
+       6. add(E e) - adds the specified element before the element that will be returned by the next() and after the element that will be returned by previous()
+    k. subList(int fromIndex, int toIndex) - returns list [fromIndex, toIndex)
+3. List allows null values.
+
+__________________________________________________
+
+ArrayList:
+1. It's not thread-safe. Inorder to make it thread-safe we can use "CopyOnWriteArrayList".
+2. Insertion order is preserved.
+3. Rest of the details are same as List interface.
+4. Increases its capacity by 50% of its current size when it needs to grow. This means if the current capacity is 10, it will grow to 15, then 22, and so on.
+5. Introduced in Java 1.2
+
+__________________________________________________
+
+LinkedList:
+1. It implements both Deque and List interfaces.
+2. Insertion order is preserved.
+3. It uses Doubly Linked List data structure internally.
+4. It also maintains start and end nodes reference.
+5. It's not thread-safe. Inorder to make it thread-safe we can use "CopyOnWriteArrayList".
+6. Methods are same as List and Deque methods.
+
+__________________________________________________
+
+Vector:
+1. It is same as ArrayList but it's thread-safe.
+2. Puts lock when anytime an operation is performed on vector.
+3. Preserves insertion order and allows null values.
+4. Methods are same as ArrayList.
+5. Double it's size when filled.
+6. Doubles its capacity when it needs to grow. If the current capacity is 10, it will grow to 20, then 40, and so on. This can lead to higher memory usage but reduces the frequency of resizing.
+7. Introduced in Java 1.0
+
+__________________________________________________
+
+Stack:
+1. It's thread-safe since it extends Vector class.
+2. Methods of Stack:
+   a. push(E e)
+   b. pop() - Removes the object at the top of this stack and returns it. Throws EmptyStackException if stack is empty.
+   c. peek() - returns the object at the top without removing it from the stack. Throws EmptyStackException if stack is empty.
+3. Stack does maintain the insertion order, but it provides access to elements in the reverse order due to its LIFO nature.
