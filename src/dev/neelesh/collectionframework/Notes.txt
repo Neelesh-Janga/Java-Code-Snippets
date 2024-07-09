@@ -1,0 +1,29 @@
+Methods that are most commonly used by all Collection Objects:
+1. size()
+2. isEmpty()
+3. contains(Object o)
+4. containsAll(Collection c)
+5. add(E e)
+6. addAll(Collection c)
+7. remove(Object o)
+8. removeAll(Collection c)
+9. clear()
+10. toArray()
+11. equals(Object o)
+12. removeIf(Predicate filter)
+13. stream() and parallelStream()
+14. iterator()
+
+Note:
+Collection (singular form) is a framework whereas Collections (plural form) is a utility class and provides
+static methods to operate on collection objects.
+Collections methods:
+1. sort
+2. binarySearch
+3. get
+4. reverse
+5. copy
+6. rotate
+7. min
+8. max
+etc,
