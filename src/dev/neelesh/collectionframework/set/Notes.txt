@@ -1,0 +1,27 @@
+Set:
+1. Insertion order is not maintained since it's not ordered collection unlike List.
+2. Only one null value is allowed.
+3. Doesn't contain duplicate values.
+4. No indexation is possible because of unordered nature.
+5. No new methods are provided in Set interface a part from Collection interface methods.
+
+-----------------------------------------------
+
+HashSet:
+1. Data structure used internally is HashMap
+2. Element is stored as Key and a dummy object is stored as value
+3. It's not thread-safe. To make a Set thread-safe, use ConcurrentHashMap and call newKeySet() method and use it as a set.
+
+-----------------------------------------------
+
+LinkedHashSet:
+1. Data structure used internally is LinkedHashMap
+2. Maintains insertion order of the elements
+3. It's not thread-safe. To make is thread-safe use Collections.synchronizedSet(linkedHashSet);
+
+-----------------------------------------------
+
+TreeSet:
+1. Data structure used internally is TreeMap
+2. Null value is not allowed.
+3. Sorts the data based on natural ordering or comparator provided while instantiation.
