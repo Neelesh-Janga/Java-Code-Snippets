@@ -1,0 +1,36 @@
+Queue Interface:
+1. PriorityQueue, ArrayDeque & LinkedList are the concrete implementations of Queue interface
+2. It supports all Collection methods.
+3. Null values are not allowed in queue, if tried, it returns NullPointerException.
+4. Some of the methods that are added in Queue interface and some overridden from Collection interface are:
+   a. add(E e) - inserts element. Returns true if success else exception is thrown.
+   b. offer(E e) - similar to add(E e) but won't throw any exception in failure scenario
+   c. remove() - removes element from head of the queue. Returns exception (NoSuchElementException) if element isn't found
+   d. poll() - similar to remove but returns null in case of no such element found at head.
+   e. element() - retrieves the value at head but doesn't remove it. Also throws NoSuchElementException
+   f. peek() - retrieves the value at head but doesn't remove it. If element is not found, it returns null.
+
+PriorityQueue:
+1. It's based on Priority Heap data structure
+2. Two types of PriorityQueues available:
+   i. Min PriorityQueue
+   ii. Max PriorityQueue
+3. By default, the configuration is set to Min PriorityQueue but if we need to change it then while instantiation we need
+   to use a Comparator as constructor argument.
+   new PriorityQueue((a, b) -> b-a); // results in Max PriorityQueue
+4. It's not thread-safe and the alternate thread-safe collection is "PriorityBlockingQueue" which implements "BlockingQueue"
+5. Insertion order is not maintained.
+
+Deque:
+1. It's an interface extending Queue and stands for Double Ended Queue, implies addition and removal operations can
+   be done from both the ends.
+2. add___(), offer___(), remove___(), poll___(), get___(), peek___()
+   Note: ___ could be replaced by "First" or "Last".
+   Eg: addFirst(e), pollLast(), removeFirst(), etc.
+3. A part from the above methods, we can also use Queue interface methods as well.
+4. Stack data structure can be achieved using addFirst(e) --> push(e) and removeFirst() --> pop()
+
+ArrayDeque:
+1. It implements the methods of Queue and Deque.
+2. It's not thread-safe, so to make it thread-safe we can go with alternate collection called "ConcurrentLinkedDeque"
+3. It maintains insertion order.
