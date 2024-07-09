@@ -1,0 +1,99 @@
+Concrete Classes of Map interface:
+1. HashMap implements Map
+2. HashTable implements Map
+3. LinkedHashMap implements Map
+4. TreeMap implements NavigableMap (extends SortedMap (extends Map) )
+
+-----------------------------------
+
+Methods available in Map interface:
+1. size() - returns size of map
+2. isEmpty() - return true if map is empty
+3. containsKey(Object key) - returns boolean value
+4. containsValue(Object value) - returns boolean value
+5. get(Object key)
+6. put(K key, V value)
+7. remove(Object key)
+8. putAll(Map<K, v> map)
+9. clear()
+10. keySet() - returns Set<K>
+11. values() - Collection<V>
+12. entrySet() - returns Set<Map.Entry<K, V>>
+13. putIfAbsent(K key, V value) - Return value if key is present else put the mapping into the map
+14. getOrDefault(key, defaultValue) - If key-value pair exists then bring that value else return default value.
+
+Methods available in Map.Entry<K, V> interface:
+1. getKey() - returns key of the current entry
+2. getValue() - returns value of the current entry
+3. int hashCode() - returns object hashcode
+4. boolean equals(Object o)
+
+-----------------------------------
+
+HashMap & HashTable:
+1. Both don't preserve the order of insertion.
+2. HashMap is not thread-safe whereas HashTable is thread-safe.
+3. HashMap performs better than HashTable.
+4. Both doesn't maintain insertion order.
+5. Alternative thread-safe version of HashMap is ConcurrentHashMap.
+6. HashMap allows one null key whereas HashTable doesn't allow null keys.
+
+-----------------------------------
+
+LinkedHashMap:
+1. Maintains Insertion order or Access order.
+2. Internally uses Doubly Linked List to store Key-Values.
+3. Each node has [key, value, hashcode, next, before, after],
+   Each node is placed in a bucket/bin in its respective hashcode position.
+   similar to doubly linked list next and previous, after and before are used to point next node and prev node.
+   next is used to point to the node that has the same hashcode value.
+   head points to start node and tail points to last node.
+4. LinkedHashMap<Integer, String> linkedHashMap2 = new LinkedHashMap<>(10, 50, true);
+   Here, initialCapacity = 10, loadFactor = 50 (50%), accessOrder = true (implies it won't preserve insertion order)
+   This means that create a LinkedHashMap or size 10, preserve access order and make sure to double its size if 50% of
+   the LinkedHashMap is filled.
+5. Allows one null key and multiple null values
+6. It's not synchronized and to make it synchronized,
+   Collections.synchronizedMap(linkedHashMap1) - returns Map<K, V>
+
+-----------------------------------
+
+TreeMap:
+1. TreeMap uses Red-Black trees (Self-Balancing BST)
+2. Map is sorted in its natural ordering or by using Comparator that should be provided through constructor field
+   new TreeMap<>((a, b) -> b-a) // For sorting in Descending order of keys
+   new TreeMap<>((a, b) -> a-b) // For sorting in Ascending order of keys
+   Note: Ascending order is the natural ordering so no need to provide comparator here.
+3. Node structure:
+   [left, parent, key, value, right]
+4. Methods available in SortedMap interface:
+   a. headMap(K toKey) - returns SortedMap<K, V> till the key (exclusive)
+      Eg: myMap = {1:One, 2:Two, 3:Three, 4:four}
+          myMap.headMap(3) --> {1:One, 2:Two}
+   b. tailMap(K fromKey) - returns SortedMap<K, V> from the key (inclusive)
+      Eg: myMap = {1:One, 2:Two, 3:Three, 4:four}
+          myMap.headMap(3) --> {3:Three, 4:four}
+   c. firstKey() - returns first key of type K
+   d. lastKey() - returns last key of type K
+5. Methods available in NavigableMap interface:
+   a. lowerEntry(K key) - returns the Entry having the key that is immediately less than the given key
+   b. floorEntry(K key) - returns the Entry having the key that is immediately less than or equal to the given key
+   c. lowerKey(K key) - returns the key that is immediately less than the given key
+   d. floorKey(K key) - returns the key that is immediately less than or equal to the given key
+   e. higherEntry(K key) - opposite of lowerEntry(key)
+   f. ceilingEntry(K key) - opposite of floorEntry(key)
+   g. higherKey(K key) - opposite of lowerKey(key)
+   h. ceilingKey(K key) - opposite of floorKey(key)
+   i. firstEntry() - returns first Map.Entry
+   j. pollFirstEntry() - removes and returns first Map.Entry
+   k. lastEntry() - returns last Map.Entry
+   l. pollLastEntry() - removes and returns last Map.Entry
+   m. descendingMap() - reverses the map and returns it
+   n. descendingKeySet() - returns Set of keys in descending order
+   o. navigableKeySet() - returns Set of keys in ascending order
+   p. headMap(K key, boolean inclusive) - similar to headMap of SortedMap but inclusiveness of key based on boolean value
+   q. tailMap(K key, boolean inclusive) - similar to tailMap of SortedMap but inclusiveness of key based on boolean value
+6. Iterator returned by the iterator method of Collections are fail-fast, i.e., any concurrent structural modification
+   will result in ConcurrentModificationException.
+7. To make TreeMap thread safe, we must use Collections.synchronizedNavigableMap(treeMap);
+8. It won't allow null keys, similar to HashTable.
