@@ -1,0 +1,48 @@
+1. Create a Native method
+2. Compile it and generate a header file using
+javac -h . <classname>.java
+3. Create a C file and include
+   a.) jni.h
+   b.) stdio.h
+   c.) header file created using step-2
+   d.) Create a method with the format
+       JNIEXPORT <return_type> JNICALL Java_<package_path>_<class_name>_<method_name>(JNIEnv *env, jobject obj, ...);
+   e.) Compile the C program using,
+       sudo gcc -dynamiclib -o ./bin/libjni_demo.dylib jni/JNIDemo.c -I${JAVA_HOME}/include -I${JAVA_HOME}/include/darwin
+
+       "sudo":
+       It is used to run the subsequent command (gcc in this case) with superuser (administrator) privileges.
+       It may prompt you to enter your password depending on your system configuration.
+
+       "gcc":
+       This is the GNU Compiler Collection command for compiling C and C++ programs.
+
+       "-dynamiclib":
+       Specifies that the output should be a dynamic library (shared library).
+
+       "-o ./bin/libjni_demo.dylib":
+       1.) -o option specifies the output file name.
+       2.) ./bin/libjni_demo.dylib specifies the relative path and name of the output shared library file.
+       3.) ./bin/ indicates that the output file libjni_demo.dylib will be placed in the bin directory within the
+           current directory (./).
+
+       "jni/JNIDemo.c":
+       1. jni/JNIDemo.c specifies the path to the source file (JNIDemo.c) containing your JNI native method implementation.
+       2. This assumes that JNIDemo.c is located in the jni directory relative to your current working directory.
+
+       "-I${JAVA_HOME}/include":
+       1. -I option specifies the directory to search for header files.
+       2. ${JAVA_HOME}/include is an environment variable that points to the directory containing JNI header files
+          (jni.h and others). This directory is essential for compiling JNI code as it provides necessary header files
+          for interfacing with the Java Virtual Machine (JVM).
+
+       "-I${JAVA_HOME}/include/darwin":
+       1. Another -I option specifying the platform-specific include directory for macOS (Darwin).
+       2. ${JAVA_HOME}/include/darwin provides additional JNI header files specific to macOS, necessary for compiling
+          JNI code on macOS.
+   f. In case if the above command fails, then create a bin folder in parent and try again, if get stuck, unleash your
+      prompt engineering skills with Chat GPT or other tools.
+4. Run the .Java file using,
+   java -Djava.library.path=./bin jni/JNIDemo.java
+
+Note: You can adjust the path according to your current directory
