@@ -1,4 +1,4 @@
-package dev.neelesh.iterinng;
+package dev.neelesh.iterating;
 
 import java.util.ArrayList;
 import java.util.Iterator;
