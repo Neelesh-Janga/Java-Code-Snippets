@@ -1,8 +1,8 @@
-package dev.neelesh.multithreading.producer_consumer_problem.monitorlock;
+package dev.neelesh.multithreading.lockbased.producer_consumer_problem.monitorlock;
 
 
-import dev.neelesh.multithreading.producer_consumer_problem.Consumer;
-import dev.neelesh.multithreading.producer_consumer_problem.Producer;
+import dev.neelesh.multithreading.lockbased.producer_consumer_problem.Consumer;
+import dev.neelesh.multithreading.lockbased.producer_consumer_problem.Producer;
 
 import java.util.ArrayDeque;
 import java.util.Random;

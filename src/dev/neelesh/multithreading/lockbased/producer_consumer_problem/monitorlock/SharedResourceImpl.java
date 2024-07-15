@@ -1,6 +1,6 @@
-package dev.neelesh.multithreading.producer_consumer_problem.monitorlock;
+package dev.neelesh.multithreading.lockbased.producer_consumer_problem.monitorlock;
 
-import dev.neelesh.multithreading.producer_consumer_problem.*;
+import dev.neelesh.multithreading.lockbased.producer_consumer_problem.*;
 import java.util.*;
 
 public class SharedResourceImpl implements SharedResource {

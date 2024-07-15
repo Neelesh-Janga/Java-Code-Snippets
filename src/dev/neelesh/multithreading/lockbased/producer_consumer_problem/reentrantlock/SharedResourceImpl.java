@@ -1,6 +1,6 @@
-package dev.neelesh.multithreading.producer_consumer_problem.reentrantlock;
+package dev.neelesh.multithreading.lockbased.producer_consumer_problem.reentrantlock;
 
-import dev.neelesh.multithreading.producer_consumer_problem.*;
+import dev.neelesh.multithreading.lockbased.producer_consumer_problem.*;
 
 import java.util.Queue;
 import java.util.concurrent.locks.Condition;

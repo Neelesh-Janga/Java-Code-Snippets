@@ -1,9 +1,9 @@
-package dev.neelesh.multithreading.producer_consumer_problem.readwritelock;
+package dev.neelesh.multithreading.lockbased.producer_consumer_problem.readwritelock;
 
 
-import dev.neelesh.multithreading.producer_consumer_problem.Consumer;
-import dev.neelesh.multithreading.producer_consumer_problem.Producer;
-import dev.neelesh.multithreading.producer_consumer_problem.SharedResource;
+import dev.neelesh.multithreading.lockbased.producer_consumer_problem.Consumer;
+import dev.neelesh.multithreading.lockbased.producer_consumer_problem.Producer;
+import dev.neelesh.multithreading.lockbased.producer_consumer_problem.SharedResource;
 
 import java.util.ArrayDeque;
 import java.util.Random;

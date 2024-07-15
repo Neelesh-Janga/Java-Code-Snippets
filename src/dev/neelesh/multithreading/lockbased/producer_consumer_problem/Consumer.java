@@ -1,4 +1,4 @@
-package dev.neelesh.multithreading.producer_consumer_problem;
+package dev.neelesh.multithreading.lockbased.producer_consumer_problem;
 
 public class Consumer implements Runnable {
 
