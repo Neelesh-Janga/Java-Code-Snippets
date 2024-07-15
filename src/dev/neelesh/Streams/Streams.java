@@ -58,6 +58,9 @@ public class Streams {
         System.out.println(concatenateUsingReduce(new String[]{"Hello", " ", "World"}));
         System.out.println(sortNamesAsc(persons));
         System.out.println(sortNamesDesc(persons));
+        System.out.println(anyElementsStartsWithA(persons));
+        System.out.println(allElementsStartsWithA(persons));
+        System.out.println(noneElementsStartsWithA(persons));
         System.out.println(sortBasedOnName(persons));
         System.out.println(sortDescBasedOnName(persons));
         System.out.println(groupByGender(persons));
