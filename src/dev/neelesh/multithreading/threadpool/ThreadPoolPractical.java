@@ -1,30 +1,51 @@
 package dev.neelesh.multithreading.threadpool;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.*;
 
 public class ThreadPoolPractical {
     
     public static void main(String[] args) {
-        ThreadPoolPractical practical = new ThreadPoolPractical();
-        ThreadPoolExecutor executor = practical.new ThreadPoolExecutorPractical().getThreadPoolExecutor();
+        
+        ThreadPoolExecutor executor = executor = new ThreadPoolExecutor(
+                2, 4, 3, TimeUnit.MINUTES,
+                new ArrayBlockingQueue<Runnable>(3),
+                new CustomThreadFactory(), new CustomRejectedHandler()
+        );
+        
         executor.allowCoreThreadTimeOut(true);
+        
+        Map<Integer, Future<?>> futureMap = new HashMap<>();
+        
         for (int i = 0; i < 10; i++) {
-            executor.submit(
+            System.out.println(Thread.currentThread().getName() + " thread calling executor.submit(..)");
+            Future<?> future = executor.submit(
                     () -> {
                         System.out.println("Task processed by: " + Thread.currentThread().getName());
                         try {
-                            Thread.sleep(5000);
+                            Thread.sleep(3000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
             );
+            System.out.println("Queue size = " + executor.getQueue().size());
+            futureMap.put(i+1, future);
         }
+        
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("List of futures for the task allocated threads:");
+        futureMap.forEach((key, value) -> System.out.println(key + " : " + value.isDone()));
         
         executor.shutdown();
     }
     
-    class CustomThreadFactory implements ThreadFactory {
+    static class CustomThreadFactory implements ThreadFactory {
         
         private static int threadCount = 0;
         
@@ -37,28 +58,10 @@ public class ThreadPoolPractical {
         }
     }
     
-    class CustomRejectedHandler implements RejectedExecutionHandler{
+    static class CustomRejectedHandler implements RejectedExecutionHandler{
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             System.out.println("Task rejected by " + Thread.currentThread().getName());
         }
-    }
-    
-    class ThreadPoolExecutorPractical{
-        ThreadPoolExecutor executor;
-        
-        public ThreadPoolExecutorPractical() {
-            executor = new ThreadPoolExecutor(
-                    2, 4, 3, TimeUnit.MINUTES,
-                    new ArrayBlockingQueue<Runnable>(3),
-                    new CustomThreadFactory(),
-                    new CustomRejectedHandler()
-            );
-        }
-        
-        public ThreadPoolExecutor getThreadPoolExecutor() {
-            return executor;
-        }
-        
     }
 }
