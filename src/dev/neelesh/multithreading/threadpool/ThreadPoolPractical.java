@@ -8,7 +8,7 @@ public class ThreadPoolPractical {
     
     public static void main(String[] args) {
         
-        ThreadPoolExecutor executor = executor = new ThreadPoolExecutor(
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(
                 2, 4, 3, TimeUnit.MINUTES,
                 new ArrayBlockingQueue<Runnable>(3),
                 new CustomThreadFactory(), new CustomRejectedHandler()
