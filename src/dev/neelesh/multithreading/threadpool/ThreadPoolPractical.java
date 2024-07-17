@@ -1,8 +1,13 @@
 package dev.neelesh.multithreading.threadpool;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class ThreadPoolPractical {
     
@@ -42,26 +47,22 @@ public class ThreadPoolPractical {
         System.out.println("List of futures for the task allocated threads:");
         futureMap.forEach((key, value) -> System.out.println(key + " : " + value.isDone()));
         
+        
+        // If you don't have access to list variable then this is how you can get the list.
+        Future<?> futureObject;
+        {
+            final List<Integer> list = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,9));
+            futureObject = executor.submit(() -> {}, list);
+        }
+        
+        try {
+            System.out.println("Object obtained using Future.get():");
+            Object o = futureObject.get();
+            System.out.println(o);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         executor.shutdown();
-    }
-    
-    static class CustomThreadFactory implements ThreadFactory {
-        
-        private static int threadCount = 0;
-        
-        @Override
-        public Thread newThread(Runnable r) {
-            Thread t = new Thread(r, "Thread-"+(++threadCount));
-            t.setDaemon(false);
-            t.setPriority(Thread.NORM_PRIORITY);
-            return t;
-        }
-    }
-    
-    static class CustomRejectedHandler implements RejectedExecutionHandler{
-        @Override
-        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-            System.out.println("Task rejected by " + Thread.currentThread().getName());
-        }
     }
 }
