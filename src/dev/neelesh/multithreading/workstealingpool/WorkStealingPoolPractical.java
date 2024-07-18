@@ -1,24 +1,28 @@
 package dev.neelesh.multithreading.workstealingpool;
 
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.Future;
-import java.util.concurrent.RecursiveAction;
-import java.util.concurrent.RecursiveTask;
+import java.util.concurrent.*;
 
 public class WorkStealingPoolPractical {
     
     public static void main(String[] args) {
-        ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
+    
+//        Parallelism levels are selected based on Available Processors
+        ForkJoinPool forkJoinPool1 = (ForkJoinPool) Executors.newWorkStealingPool();
+
+//        Parallelism levels are selected explicitly
+//        ForkJoinPool forkJoinPool2 = (ForkJoinPool) Executors.newWorkStealingPool(2);
+
+//        Parallelism levels are selected as Max(1, Available Processors - 1)
+        ForkJoinPool forkJoinPool3 = ForkJoinPool.commonPool();
         
-        int arr[] = {1,2,3,4,5,6,7,8,9,10};
+        int [] arr1 = {1,2,3,4,5,1,2,3,4,5};
+        int [] arr2 = {1,2,3,4,5,6,7,8,9,10};
         
         System.out.println("----RecursiveTask Example:----");
-        recursiveTaskPractical(forkJoinPool, arr);
+        recursiveTaskPractical(forkJoinPool1, arr1);
 
         System.out.println("\n----RecursiveAction Example:----");
-        recursiveActionPractical(forkJoinPool, arr);
-        
-        forkJoinPool.shutdown();
+        recursiveActionPractical(forkJoinPool3, arr2);
     }
     
     static void recursiveTaskPractical(ForkJoinPool forkJoinPool, int [] arr){
